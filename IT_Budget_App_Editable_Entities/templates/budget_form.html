@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h4>Add Budget Entry</h4>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.bm_year.label }} {{ form.bm_year(class="form-control") }}
+    {{ form.bm_category.label }} {{ form.bm_category(class="form-control") }}
+    {{ form.bm_amount.label }} {{ form.bm_amount(class="form-control") }}
+    {{ form.bm_remarks.label }} {{ form.bm_remarks(class="form-control") }}
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+
+
+<hr>
+<h5>Budget Entries:</h5>
+<table class="table table-bordered">
+    <tr><th>Year</th><th>Category</th><th>Amount</th><th>Remarks</th></tr>
+    {% for b in budgets %}
+    <tr><td>{{ b.bm_year }}</td><td>{{ b.bm_category }}</td><td>{{ b.bm_amount }}</td><td>{{ b.bm_remarks }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

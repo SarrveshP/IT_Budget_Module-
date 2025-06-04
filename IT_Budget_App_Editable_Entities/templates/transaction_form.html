@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h4>Add Transaction Entry</h4>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.bt_date.label }} {{ form.bt_date(class="form-control") }}
+    {{ form.bt_category.label }} {{ form.bt_category(class="form-control") }}
+    {{ form.bt_division.label }} {{ form.bt_division(class="form-control") }}
+    {{ form.bt_amount.label }} {{ form.bt_amount(class="form-control") }}
+    {{ form.bt_purpose.label }} {{ form.bt_purpose(class="form-control") }}
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<hr>
+<h5>Transactions:</h5>
+<table class="table table-bordered">
+    <tr><th>Date</th><th>Category</th><th>Division</th><th>Amount</th><th>Purpose</th></tr>
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t.bt_date }}</td><td>{{ t.bt_category }}</td>
+        <td>{{ t.bt_division }}</td><td>{{ t.bt_amount }}</td><td>{{ t.bt_purpose }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
